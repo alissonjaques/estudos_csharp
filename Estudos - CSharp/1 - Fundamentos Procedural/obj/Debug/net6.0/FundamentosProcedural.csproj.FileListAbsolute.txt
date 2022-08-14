@@ -1,0 +1,15 @@
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.csproj.AssemblyReference.cache
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.AssemblyInfoInputs.cache
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.AssemblyInfo.cs
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.csproj.CoreCompileInputs.cache
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\bin\Debug\net6.0\FundamentosProcedural.exe
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\bin\Debug\net6.0\FundamentosProcedural.deps.json
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\bin\Debug\net6.0\FundamentosProcedural.runtimeconfig.json
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\bin\Debug\net6.0\FundamentosProcedural.dll
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\bin\Debug\net6.0\FundamentosProcedural.pdb
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.dll
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\refint\FundamentosProcedural.dll
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.pdb
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\FundamentosProcedural.genruntimeconfig.cache
+C:\Users\licin\Documents\Programacao de Computadores\CSharp\FundamentosProcedural\obj\Debug\net6.0\ref\FundamentosProcedural.dll
