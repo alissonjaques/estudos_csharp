@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Estudos - CSharp",
+    "\\Estudos - CSharp\\2 - Fundamentos Orientação a Objetos\\bytebank",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank\\main",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank\\model",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank\\model\\Clientes",
+    "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank\\model\\Contas"
   ],
-  "SelectedNode": "\\C:\\Users\\licin\\Downloads\\CSharp",
+  "SelectedNode": "\\Estudos - CSharp\\3 - Herança, Interface e Polimorfismo\\bytebank\\model\\Contas\\ContaCorrente.cs",
   "PreviewInSolutionExplorer": false
 }
