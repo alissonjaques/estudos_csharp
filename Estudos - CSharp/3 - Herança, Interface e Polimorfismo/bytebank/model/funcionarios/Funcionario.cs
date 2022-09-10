@@ -1,13 +1,15 @@
 ﻿using System.Text;
 
+using bytebank.model.util;
+
 namespace bytebank.model.funcionarios
 {
     public class Funcionario
     {
-        public static double TotalDeBonificacoes { get; set; }  
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public double Salario { get; set; }
+        public static double TotalDeBonificacoes { get; set; }
 
         public Funcionario(string nome, string cpf, double salario)
         {
@@ -16,6 +18,12 @@ namespace bytebank.model.funcionarios
             this.Salario = salario;
         }
 
+        public double getBonificacao() {
+            double bonificacao = Bonificacao.getBonificacao(this);
+            Funcionario.TotalDeBonificacoes += bonificacao;
+            return bonificacao;
+        }
+        
         public Funcionario()
         {
             this.Nome = "";
@@ -23,13 +31,6 @@ namespace bytebank.model.funcionarios
             this.Salario = 0.0;
         }
         
-        public double getBonificacao(Funcionario funcionario)
-        {
-            double bonificacao = funcionario.Salario * 0.1;
-            this.TotalDeBonificacoes += bonificacao;
-            return bonificacao;
-        }
-
         public override string? ToString()
         {
             StringBuilder resultado = new StringBuilder();
@@ -38,7 +39,6 @@ namespace bytebank.model.funcionarios
             resultado.Append("\nSalário: R$ ").Append(Salario);
             return resultado.ToString();
         }
-
     }
     
 }
