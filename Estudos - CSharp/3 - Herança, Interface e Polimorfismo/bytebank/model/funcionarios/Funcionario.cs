@@ -4,18 +4,28 @@ using bytebank.model.util;
 
 namespace bytebank.model.funcionarios
 {
-    public class Funcionario
+    public abstract class Funcionario
     {
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public double Salario { get; set; }
-        public static double TotalDeBonificacoes { get; set; }
+        public string Nome { get; private set; }
+        public string Cpf { get; private set; }
+        public double Salario { get; protected set; }
+        public static double TotalDeBonificacoes { get; private set; }
+        public static int TotalFuncionarios { get; private set; }
 
         public Funcionario(string nome, string cpf, double salario)
         {
             this.Nome = nome;
             this.Cpf = cpf;
             this.Salario = salario;
+            TotalFuncionarios++;
+        }
+
+        public Funcionario()
+        {
+            this.Nome = "";
+            this.Cpf = "";
+            this.Salario = 0.0;
+            TotalFuncionarios++;
         }
 
         public double getBonificacao() {
@@ -24,13 +34,11 @@ namespace bytebank.model.funcionarios
             return bonificacao;
         }
         
-        public Funcionario()
+        public virtual void aumentarSalario() 
         {
-            this.Nome = "";
-            this.Cpf = "";
-            this.Salario = 0.0;
+            this.Salario *= 1.1;
         }
-        
+
         public override string? ToString()
         {
             StringBuilder resultado = new StringBuilder();

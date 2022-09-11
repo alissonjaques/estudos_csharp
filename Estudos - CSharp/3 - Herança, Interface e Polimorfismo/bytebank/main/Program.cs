@@ -15,14 +15,34 @@ ContaCorrente contaDefault = new ContaCorrente();
 conta.Transferir(500.55, contaDefault);
 Console.WriteLine("\n"+contaDefault.ToString());
 
-Funcionario funcionario = new Funcionario("Richard Dawkins","888.888.888-88",(double)1000.0);
-Console.WriteLine(funcionario);
-Console.WriteLine("Bonificação funcionario: R$ " + funcionario.getBonificacao());
+GerenteDeContas gerente = new GerenteDeContas("Richard Dawkins","888.888.888-88");
+Console.WriteLine(gerente);
+gerente.aumentarSalario();
+Console.WriteLine("Novo salário do gerente: R$" + gerente.Salario);
+Console.WriteLine("Bonificação gerente: R$ " + gerente.getBonificacao());
+Console.WriteLine("Total de Funcionários: " + Funcionario.TotalFuncionarios);
 
-Diretor diretor = new Diretor("Galileu Galilei","999.999.999-99",(double)500.0);
+Diretor diretor = new Diretor("Galileu Galilei","999.999.999-99");
 Console.WriteLine(diretor);
+diretor.aumentarSalario();
+Console.WriteLine("Novo salário do diretor: R$" + diretor.Salario);
 Console.WriteLine("Bonificação diretor: R$ " + diretor.getBonificacao());
+Console.WriteLine("Total de Funcionários: " + Funcionario.TotalFuncionarios);
 
-Console.WriteLine("Total de Bonificações: " + Funcionario.TotalDeBonificacoes);
+Design design = new Design("Euler","222.222.222-22");
+Console.WriteLine(design);
+design.aumentarSalario();
+Console.WriteLine("Novo salário do design: R$" + design.Salario);
+Console.WriteLine("Bonificação design: R$ " + design.getBonificacao());
+Console.WriteLine("Total de Funcionários: " + Funcionario.TotalFuncionarios);
+
+Auxiliar auxiliar = new Auxiliar("Sherlock Holmes","333.333.333-33");
+Console.WriteLine(auxiliar);
+auxiliar.aumentarSalario();
+Console.WriteLine("Novo salário do auxiliar: R$" + auxiliar.Salario);
+Console.WriteLine("Bonificação auxiliar: R$ " + auxiliar.getBonificacao());
+Console.WriteLine("Total de Funcionários: " + Funcionario.TotalFuncionarios);
+
+Console.WriteLine("\nTotal de Bonificações: " + Funcionario.TotalDeBonificacoes);
 
 Console.ReadKey();

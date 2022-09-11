@@ -9,10 +9,18 @@ namespace bytebank.model.util
         {
             if (funcionario is Diretor)
             {
-                return funcionario.Salario * 1.1;                
-            } else 
+                return funcionario.Salario * 0.5;
+            } 
+            else if (funcionario is Design) 
             {
-                return funcionario.Salario * 0.1;
+                return funcionario.Salario * 0.17;
+            }
+            else if (funcionario is GerenteDeContas)
+            {
+                return funcionario.Salario * 0.25;
+            } 
+            else {
+                return funcionario.Salario * 0.20;
             }            
         }
     }
