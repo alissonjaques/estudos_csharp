@@ -1,18 +1,18 @@
 ﻿using System;
-using bytebank.model.util;
+namespace bytebank.SistemaInterno
 
 namespace bytebank.model.funcionarios
 {
-	public class Diretor:Funcionario
+	public class Diretor:Autenticavel
 	{
-        public Diretor(string nome, string cpf):base(nome, cpf, 5000.0)
+        public Diretor(string nome, string cpf, string senha):base(nome, cpf, 5000.0,senha)
         {
             
         }
         
         public Diretor()
         {
-        
+            
         }
 
         public override void aumentarSalario()

@@ -34,10 +34,7 @@ namespace bytebank.model.funcionarios
             return bonificacao;
         }
         
-        public virtual void aumentarSalario() 
-        {
-            this.Salario *= 1.1;
-        }
+        public abstract void aumentarSalario();
 
         public override string? ToString()
         {
