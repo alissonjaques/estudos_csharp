@@ -1,9 +1,9 @@
 ﻿using System;
-using namespace bytebank.SistemaInterno
+using bytebank.SistemaInterno;
 
 namespace bytebank.model.funcionarios
 {
-    public class GerenteDeContas : Autenticavel
+    public class GerenteDeContas : FuncionarioAutenticavel
     {
         public GerenteDeContas(string nome, string cpf, string senha) : base(nome, cpf, 4000.0,senha)
         {

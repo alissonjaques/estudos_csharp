@@ -1,19 +1,25 @@
 ﻿using System;
-using bytebank.model.funcionarios;
 
-namespace bytebank.SistemaInterno
+using System;
+using bytebank.model.funcionarios;
+using bytebank.SistemaInterno;
+
+namespace bytebank.ParceiroComercial
 {
-    public abstract class Autenticavel:Funcionario
+    public class ParceiroComercial : IAutenticavel
     {
         public string Senha { get; private set; }
+        public string Nome { get; private set; }
 
-        public Autenticavel(string nome, string cpf, string salario, string senha) : base(nome, cpf, salario)
+        public ParceiroComercial(string nome, string senha)
         {
+            this.Nome = nome;
             this.Senha = senha;
         }
 
-        public Autenticavel()
+        public ParceiroComercial()
         {
+            this.Nome = "";
             this.Senha = "123456";
         }
 

@@ -3,6 +3,7 @@ using bytebank.model.contas;
 using bytebank.model.funcionarios;
 using bytebank.model.util;
 using bytebank.SistemaInterno;
+using bytebank.ParceiroComercial;
 
 Console.WriteLine("Bem vindo ao ByteBank!\n");
 //TestaContas();
@@ -20,6 +21,10 @@ void TestaLogin() {
 
     gerenteDeContas.setSenha("124578");
     sistemaInterno.Logar(gerenteDeContas,"456789");
+
+    ParceiroComercial parceiro = new ParceiroComercial("Amazon","456852");
+    sistemaInterno.Logar(parceiro,"456852");
+    sistemaInterno.Logar(parceiro,"456432");
 }
 
 void TestaContas()

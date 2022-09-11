@@ -1,9 +1,9 @@
 ﻿using System;
-namespace bytebank.SistemaInterno
+using bytebank.SistemaInterno;
 
 namespace bytebank.model.funcionarios
 {
-	public class Diretor:Autenticavel
+	public class Diretor:FuncionarioAutenticavel
 	{
         public Diretor(string nome, string cpf, string senha):base(nome, cpf, 5000.0,senha)
         {
