@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "9ccU+5/5NwHLxWy4WlsDGry2hfvedGRImrCLSxZSDEfosgrRDW9keKVFrklesTGHeIPop4z5WQZaG17ek+tfxw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ALISSON JAQUES\\Documents\\Estudos\\DotNet\\CSharp\\estudos_csharp\\Estudos - CSharp\\4 - Testes Automatizados\\GerenciaDeEstacionamento\\GerenciaDeEstacionamento\\GerenciaDeEstacionamento.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ALISSON JAQUES\\.nuget\\packages\\entityframework\\5.0.0\\entityframework.5.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'EntityFramework 5.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net6.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}
