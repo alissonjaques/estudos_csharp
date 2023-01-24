@@ -21,7 +21,6 @@ namespace Testes.Model
             veiculo.Cor = "Amarelo";
             veiculo.Modelo = "Combe";
             veiculo.Placa = "AAA-7777";
-
             estacionamento.RegistrarEntradaVeiculo(veiculo);
             estacionamento.RegistrarSaidaVeiculo(veiculo.Placa);
 
@@ -30,6 +29,49 @@ namespace Testes.Model
 
             // Assert
             Assert.Equal(2, faturamento);
+        }
+
+        [Theory]
+        [InlineData("Amanda Silva","ASD-9999","Preto","Gol")]
+        [InlineData("Joaquim Fracisco Santos","ABD-8888","Vermelha","Titan")]
+        [InlineData("Juvenal Domingues Barbosa","CAS-4444","Cinza","Corsa")]
+        public void ValidaFaturamentoComVariosVeiculos(string proprietario,
+            string placa,
+            string cor,
+            string modelo)
+        {
+            // Arrange
+            var estacionamento = new Patio();
+            var veiculo = new Veiculo();
+            veiculo.Proprietario = proprietario;
+
+            if (modelo == "Titan")
+            {
+                veiculo.Tipo = TipoVeiculo.Motocicleta;
+            }
+            else
+            {
+                veiculo.Tipo = TipoVeiculo.Automovel;
+            }            
+            
+            veiculo.Cor = cor;
+            veiculo.Modelo = modelo;
+            veiculo.Placa = placa;
+            estacionamento.RegistrarEntradaVeiculo(veiculo);
+            estacionamento.RegistrarSaidaVeiculo(veiculo.Placa);
+
+            // Act
+            double faturamento = estacionamento.TotalFaturado();
+
+            // Assert
+            if(modelo == "Titan")
+            {
+                Assert.Equal(1, faturamento);
+            }
+            else
+            {
+                Assert.Equal(2, faturamento);
+            }            
         }
     }
 }
