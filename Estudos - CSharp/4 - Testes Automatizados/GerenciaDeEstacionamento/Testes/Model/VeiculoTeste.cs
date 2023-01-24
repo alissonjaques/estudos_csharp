@@ -11,8 +11,10 @@ namespace Testes.Model
         {
             // Arrange
             var veiculo = new Veiculo();
+
             // Act
             veiculo.Acelerar(10);
+            
             // Assert
             Assert.Equal(100, veiculo.VelocidadeAtual);
         } 
@@ -23,8 +25,10 @@ namespace Testes.Model
         {
             // Arrange
             var veiculo = new Veiculo();
+            
             // Act
             veiculo.Frear(10);
+            
             // Assert
             Assert.Equal(-150, veiculo.VelocidadeAtual);
         }
@@ -36,9 +40,11 @@ namespace Testes.Model
             // Arrange
             var veiculo = new Veiculo();
             var carro = new Veiculo();
+            
             // Act
             veiculo.Tipo = TipoVeiculo.Motocicleta;
             carro.Tipo = TipoVeiculo.Automovel;
+            
             // Assert
             Assert.Equal(TipoVeiculo.Automovel, new Veiculo().Tipo);
             Assert.Equal(TipoVeiculo.Automovel, carro.Tipo);
@@ -50,15 +56,33 @@ namespace Testes.Model
         [Trait("Veiculo", "Acelerar()")]
         public void TestaVeiculoClass(Veiculo modelo)
         {
-            //Arrange
+            // Arrange
             var veiculo = new Veiculo();
-
-            //Act
+            
+            // Act
             veiculo.Acelerar(10);
             modelo.Acelerar(10);
-
-            //Assert
+            
+            // Assert
             Assert.Equal(modelo.VelocidadeAtual, veiculo.VelocidadeAtual);
+        }
+
+        [Fact]
+        public void TestaDadosVeiculos()
+        {
+            // Arrange
+            var moto = new Veiculo();
+            moto.Proprietario = "Alisson Santos da Silva";
+            moto.Tipo = TipoVeiculo.Motocicleta;
+            moto.Placa = "JDA-7878";
+            moto.Cor = "Preta";
+            moto.Modelo = "Fan 150";
+
+            // Act
+            string dados = moto.ToString();
+
+            // Assert
+            Assert.Contains("Ficha do Veículo:", dados);
         }
     }
 }

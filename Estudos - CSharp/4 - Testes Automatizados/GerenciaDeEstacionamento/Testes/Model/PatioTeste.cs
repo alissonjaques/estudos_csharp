@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
+using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 
 namespace Testes.Model
 {
@@ -80,6 +83,58 @@ namespace Testes.Model
         public void ExemploTesteIgnorado()
         {
 
+        }
+
+        [Theory]
+        [InlineData("Amanda Silva", "ASD-9999", "Preto", "Gol")]
+        [Trait("Patio", "TotalFaturado()")]
+        public void LocalizaVeiculoNoPatio(string proprietario,
+            string placa,
+            string cor,
+            string modelo)
+        {
+            // Arrange
+            var estacionamento = new Patio();
+            var veiculo = new Veiculo();
+            veiculo.Proprietario = proprietario;
+            veiculo.Tipo = TipoVeiculo.Automovel;
+
+            veiculo.Cor = cor;
+            veiculo.Modelo = modelo;
+            veiculo.Placa = placa;
+            estacionamento.RegistrarEntradaVeiculo(veiculo);
+
+            // Act
+            var consultado = estacionamento.PesquisaVeiculo(placa);
+
+            // Assert
+            Assert.Equal(placa, consultado.Placa);
+        }
+
+        [Fact]
+        [Trait("Patio","AlterarDadosVeiculo(Veiculo)")]
+        public void DeveAlterarDadosVeiculo()
+        {
+            // Arrange
+            var estacionamento = new Patio();
+            var veiculo = new Veiculo();
+            veiculo.Proprietario = "Pedro Abreu";
+            veiculo.Cor = "Preto";
+            veiculo.Modelo = "Corsa";
+            veiculo.Placa = "ASD-8888";
+            estacionamento.RegistrarEntradaVeiculo(veiculo);
+
+            var veiculoAlterado = new Veiculo();
+            veiculoAlterado.Proprietario = "Pedro Abreu";
+            veiculoAlterado.Cor = "Branco";
+            veiculoAlterado.Modelo = "Corsa";
+            veiculoAlterado.Placa = "ASD-8888";
+
+            // Act
+            Veiculo alterado = estacionamento.AlterarDadosVeiculo(veiculoAlterado);
+
+            // Assert
+            Assert.Equal(alterado.Cor, veiculoAlterado.Cor);
         }
     }
 }
