@@ -73,7 +73,18 @@ namespace GerenciaDeEstacionamento.Model
         }
         public DateTime HoraEntrada { get; set; }
         public DateTime HoraSaida { get; set; }
-        public TipoVeiculo Tipo { get => _tipo; set => _tipo = value; }
+        public TipoVeiculo Tipo
+        {
+            get { return _tipo; }
+            set
+            {
+                if (value == null)
+                {
+                    _tipo = TipoVeiculo.Automovel;
+                }
+                else { _tipo = value; }
+            }
+        }
 
         //Métodos
         public void Acelerar(int tempoSeg)
@@ -96,7 +107,5 @@ namespace GerenciaDeEstacionamento.Model
         {
             Proprietario = proprietario;
         }
-
-
     }
 }
