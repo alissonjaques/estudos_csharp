@@ -56,8 +56,7 @@ namespace GerenciaDeEstacionamento.Model
                         /// Obs.: o conceito de chão é inverso e podemos utilizar Math.Floor();
                         valorASerCobrado = Math.Ceiling(tempoPermanencia.TotalHours) * 2;
 
-                    }
-                    if (v.Tipo == TipoVeiculo.Motocicleta)
+                    } else if (v.Tipo == TipoVeiculo.Motocicleta)
                     {
                         valorASerCobrado = Math.Ceiling(tempoPermanencia.TotalHours) * 1;
                     }

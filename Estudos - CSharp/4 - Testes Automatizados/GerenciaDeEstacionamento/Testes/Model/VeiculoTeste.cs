@@ -3,7 +3,7 @@ using GerenciaDeEstacionamento.Model;
 
 namespace Testes.Model
 {
-    public class VeiculoTestes
+    public class VeiculoTeste
     {
         [Fact]
         public void TestaVeiculoAcelerar()
