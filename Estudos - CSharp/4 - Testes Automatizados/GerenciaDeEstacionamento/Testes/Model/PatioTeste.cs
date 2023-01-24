@@ -11,6 +11,7 @@ namespace Testes.Model
     public class PatioTeste
     {
         [Fact]
+        [Trait("Patio","TotalFaturado()")]
         public void ValidaFaturamento()
         {
             // Arrange
@@ -35,6 +36,7 @@ namespace Testes.Model
         [InlineData("Amanda Silva","ASD-9999","Preto","Gol")]
         [InlineData("Joaquim Fracisco Santos","ABD-8888","Vermelha","Titan")]
         [InlineData("Juvenal Domingues Barbosa","CAS-4444","Cinza","Corsa")]
+        [Trait("Patio", "TotalFaturado()")]
         public void ValidaFaturamentoComVariosVeiculos(string proprietario,
             string placa,
             string cor,
@@ -72,6 +74,12 @@ namespace Testes.Model
             {
                 Assert.Equal(2, faturamento);
             }            
+        }
+
+        [Fact(DisplayName = "Deve ser Ignorado", Skip = "Exemplo de teste ignorado.")]
+        public void ExemploTesteIgnorado()
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Testes.Model
     public class VeiculoTeste
     {
         [Fact]
+        [Trait("Veiculo", "Acelerar()")]
         public void TestaVeiculoAcelerar()
         {
             // Arrange
@@ -17,6 +18,7 @@ namespace Testes.Model
         } 
         
         [Fact]
+        [Trait("Veiculo", "Frear()")]
         public void TestaVeiculoFrear()
         {
             // Arrange
@@ -28,6 +30,7 @@ namespace Testes.Model
         }
 
         [Fact]
+        [Trait("Veiculo", "Testa Tipo")]
         public void TestaVeiculoTipo()
         {
             // Arrange
@@ -40,6 +43,22 @@ namespace Testes.Model
             Assert.Equal(TipoVeiculo.Automovel, new Veiculo().Tipo);
             Assert.Equal(TipoVeiculo.Automovel, carro.Tipo);
             Assert.Equal(TipoVeiculo.Motocicleta, veiculo.Tipo);
+        }
+
+        [Theory]
+        [ClassData(typeof(Veiculo))]
+        [Trait("Veiculo", "Acelerar()")]
+        public void TestaVeiculoClass(Veiculo modelo)
+        {
+            //Arrange
+            var veiculo = new Veiculo();
+
+            //Act
+            veiculo.Acelerar(10);
+            modelo.Acelerar(10);
+
+            //Assert
+            Assert.Equal(modelo.VelocidadeAtual, veiculo.VelocidadeAtual);
         }
     }
 }

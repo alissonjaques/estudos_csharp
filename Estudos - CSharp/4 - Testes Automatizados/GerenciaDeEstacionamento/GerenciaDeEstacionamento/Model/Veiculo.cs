@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using GerenciaDeEstacionamento.Enum;
 
 namespace GerenciaDeEstacionamento.Model
 {
-    public class Veiculo
+    public class Veiculo : IEnumerable<object[]>
     {
         //Campos    
         private string _placa;
@@ -107,5 +108,21 @@ namespace GerenciaDeEstacionamento.Model
         {
             Proprietario = proprietario;
         }
+
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[]
+            {
+                new Veiculo
+                {
+                    Proprietario = "André Silva",
+                    Placa = "ASD-9999",
+                    Cor="Verde",
+                    Modelo="Fusca"
+                }
+            };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
