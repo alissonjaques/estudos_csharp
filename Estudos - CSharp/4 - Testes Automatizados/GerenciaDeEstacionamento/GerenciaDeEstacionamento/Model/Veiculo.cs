@@ -28,22 +28,22 @@ namespace GerenciaDeEstacionamento.Model
                 // Checa se o valor possui pelo menos 8 caracteres
                 if (value.Length != 8)
                 {
-                    throw new FormatException(" A placa deve possuir 8 caracteres");
+                    throw new FormatException("A placa deve possuir 8 caracteres");
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    //checa se os 3 primeiros caracteres são numeros
+                    // checa se os 3 primeiros caracteres são numeros
                     if (char.IsDigit(value[i]))
                     {
                         throw new FormatException("Os 3 primeiros caracteres devem ser letras!");
                     }
                 }
-                //checa o Hifem
+                // checa o Hifem
                 if (value[3] != '-')
                 {
                     throw new FormatException("O 4° caractere deve ser um hífen");
                 }
-                //checa se os 3 primeiros caracteres são numeros
+                // checa se os 3 primeiros caracteres são numeros
                 for (int i = 4; i < 8; i++)
                 {
                     if (!char.IsDigit(value[i]))
@@ -70,7 +70,15 @@ namespace GerenciaDeEstacionamento.Model
         public string Modelo { get; set; }
         public string Proprietario
         {
-            get; set;
+            get { return _proprietario; }
+            set 
+            { 
+                if(value.Length < 3)
+                {
+                    throw new System.FormatException("Nome do proprietário deve ser maior ou igual a 3 caracteres.");
+                }
+                _proprietario = value;
+            }
         }
         public DateTime HoraEntrada { get; set; }
         public DateTime HoraSaida { get; set; }

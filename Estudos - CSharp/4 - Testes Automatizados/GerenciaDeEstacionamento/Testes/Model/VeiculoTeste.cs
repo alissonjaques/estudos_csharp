@@ -84,6 +84,52 @@ namespace Testes.Model
             Assert.Contains("Ficha do Veículo:", dados);
         }
 
+        [Fact]
+        public void TestaNomeProprietarioVeiculoComMenosDeTresCaracteres()
+        {
+            // Arrange
+            string nomeProprietario = "ab";
+
+            // Assert
+            Assert.Throws<System.FormatException>(
+                // Act
+                () => { new Veiculo(nomeProprietario); }
+            );
+        }
+
+        [Fact]
+        public void TestaPlacaDoVeiculo()
+        {
+            // Arrange
+            string placaComMaisDeOitoCaracteres = "aaaaaaaaa";
+            string placaTresPrimeirosCaracteresNaoSaoLetras = "a45aaaaa";
+            string placaSemHifen = "aaa48654";
+            string placaQuatroUltimosDigitosNaoSaoNumeros = "aaa-a654";
+            string placaOk = "asd-4545";
+            veiculo.Placa = placaOk;
+
+            // Act
+            var acimaDeOitoCaracteres = Assert.Throws<System.FormatException>(
+                () => { new Veiculo().Placa = placaComMaisDeOitoCaracteres; }
+            );
+            var tresPrimeirosCaracteresComNumeros = Assert.Throws<System.FormatException>(
+                () => { new Veiculo().Placa = placaTresPrimeirosCaracteresNaoSaoLetras; }
+            );
+            var semHifen = Assert.Throws<System.FormatException>(
+                () => { new Veiculo().Placa = placaSemHifen; }
+            );
+            var quatroUltimosCaracteresComLetras = Assert.Throws<System.FormatException>(
+                () => { new Veiculo().Placa = placaQuatroUltimosDigitosNaoSaoNumeros; }
+            );
+
+            // Assert
+            Assert.Equal("A placa deve possuir 8 caracteres", acimaDeOitoCaracteres.Message);
+            Assert.Equal("Os 3 primeiros caracteres devem ser letras!", tresPrimeirosCaracteresComNumeros.Message);
+            Assert.Equal("O 4° caractere deve ser um hífen", semHifen.Message);
+            Assert.Equal("Do 5º ao 8º caractere deve-se ter um número!", quatroUltimosCaracteresComLetras.Message);
+            Assert.Equal(veiculo.Placa, placaOk);
+        }
+
         public void Dispose()
         {
             Output.WriteLine("Execução do Cleanup: Limpando os objetos.");
