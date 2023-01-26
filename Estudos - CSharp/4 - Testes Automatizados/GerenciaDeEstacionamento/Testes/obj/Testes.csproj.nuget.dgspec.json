@@ -47,7 +47,7 @@
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[6.4.4, )"
             }
           },
           "imports": [

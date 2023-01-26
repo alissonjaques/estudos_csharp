@@ -14,9 +14,11 @@ namespace GerenciaDeEstacionamento.Model
         private string _placa;
         private string _proprietario;
         private TipoVeiculo _tipo;
+        private string _ticket;
 
-        //Propriedades   
-
+        //Propriedades
+        public string IdTicket { get; set; }
+        public string Ticket { get => _ticket; set => _ticket = value; }
         public string Placa
         {
             get
@@ -143,12 +145,14 @@ namespace GerenciaDeEstacionamento.Model
 
         public override string ToString()
         {
-            return $"Ficha do Veículo: \n" +
-                $"Tipo do Veículo: {this.Tipo.ToString()}\n" +
-                $"Proprietário: {this.Proprietario}\n" +
-                $"Modelo: {this.Modelo}\n" +
-                $"Cor: {this.Cor}\n" +
-                $"Placa: {this.Placa}\n";
+            StringBuilder resultado = new StringBuilder();
+            resultado.Append($"Ficha do Veículo: \n")
+                .Append($"Tipo do Veículo: {this.Tipo.ToString()}\n")
+                .Append($"Proprietário: {this.Proprietario}\n")
+                .Append($"Modelo: {this.Modelo}\n")
+                .Append($"Cor: {this.Cor}\n")
+                .Append($"Placa: {this.Placa}\n");
+            return resultado.ToString();
         }
     }
 }

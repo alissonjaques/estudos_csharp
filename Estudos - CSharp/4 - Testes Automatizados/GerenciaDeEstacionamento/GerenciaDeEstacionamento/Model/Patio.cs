@@ -28,7 +28,8 @@ namespace GerenciaDeEstacionamento.Model
 
         public string MostrarFaturamento()
         {
-            string totalfaturado = String.Format("Total faturado até o momento :::::::::::::::::::::::::::: {0:c}", this.TotalFaturado());
+            string totalfaturado = String.Format("Total faturado até o momento :::::::::::::::::::::::::::: {0:c}", 
+                this.TotalFaturado());
             return totalfaturado;
         }
 
@@ -36,6 +37,7 @@ namespace GerenciaDeEstacionamento.Model
         {
             veiculo.HoraEntrada = DateTime.Now;
             this.Veiculos.Add(veiculo);
+            GerarTicket(veiculo);
         }
 
         public string RegistrarSaidaVeiculo(String placa)
@@ -52,7 +54,8 @@ namespace GerenciaDeEstacionamento.Model
                     double valorASerCobrado = 0;
                     if (v.Tipo == TipoVeiculo.Automovel)
                     {
-                        /// o método Math.Ceiling(), aplica o conceito de teto da matemática onde o valor máximo é o inteiro imediatamente posterior a ele.
+                        /// o método Math.Ceiling(), aplica o conceito de teto da matemática onde o valor máximo é o inteiro 
+                        /// imediatamente posterior a ele.
                         /// Ex.: 0,9999 ou 0,0001 teto = 1
                         /// Obs.: o conceito de chão é inverso e podemos utilizar Math.Floor();
                         valorASerCobrado = Math.Ceiling(tempoPermanencia.TotalHours) * 2;
@@ -83,11 +86,11 @@ namespace GerenciaDeEstacionamento.Model
             return informacao;
         }
 
-        public Veiculo PesquisaVeiculo(string placa)
+        public Veiculo PesquisaVeiculo(string idTicket)
         {
             var encontrado = (from veiculo in this.Veiculos 
-                    where veiculo.Placa == placa 
-                    select veiculo).SingleOrDefault();
+                    where veiculo.IdTicket == idTicket
+                              select veiculo).SingleOrDefault();
             return encontrado;
         }
 
@@ -98,6 +101,18 @@ namespace GerenciaDeEstacionamento.Model
                                select veiculo).SingleOrDefault();
             veiculoTemp.AlterarDados(veiculoAlterado);            
             return veiculoTemp;
+        }
+
+        private string GerarTicket(Veiculo veiculo)
+        {
+            veiculo.IdTicket = new Guid().ToString().Substring(0, 5);
+            StringBuilder ticket = new StringBuilder();
+            ticket.Append("======= Ticket Estacionamento =======\n")
+                .Append($">>> Identificador: {veiculo.IdTicket}\n")
+                .Append($">>> Data/Hora de Entrada: {DateTime.Now}\n")
+                .Append($">>> Placa do Veículo: {veiculo.Placa}");
+            veiculo.Ticket = ticket.ToString();
+            return ticket.ToString();
         }
     }
 }

@@ -89,7 +89,7 @@ namespace Testes.Model
         [Theory]
         [InlineData("Amanda Silva", "ASD-9999", "Preto", "Gol")]
         [Trait("Patio", "TotalFaturado")]
-        public void DeveLocalizarVeiculoNoPatioPelaPlaca(string proprietario,
+        public void DeveLocalizarVeiculoNoPatioPeloIdDoTicket(string proprietario,
             string placa,
             string cor,
             string modelo)
@@ -103,10 +103,10 @@ namespace Testes.Model
             estacionamento.RegistrarEntradaVeiculo(veiculo);
 
             // Act
-            var consultado = estacionamento.PesquisaVeiculo(placa);
+            var consultado = estacionamento.PesquisaVeiculo(veiculo.IdTicket);
 
             // Assert
-            Assert.Equal(placa, consultado.Placa);
+            Assert.Contains("======= Ticket Estacionamento =======", veiculo.Ticket);
         }
 
         [Fact]
