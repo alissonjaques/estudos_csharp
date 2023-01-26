@@ -8,11 +8,15 @@ namespace Testes.Model
     {
         private Patio estacionamento;
         private Veiculo veiculo;
+        private Operador operador;
         public ITestOutputHelper Output { get; }
 
         public PatioTeste(ITestOutputHelper saidaConsoleTeste)
         {
             estacionamento = new Patio();
+            operador= new Operador();
+            operador.Nome = "João Francisco Caetano";
+            estacionamento.OperadorPatio = operador;
             veiculo = new Veiculo();
             Output = saidaConsoleTeste;
             Output.WriteLine("Construtor Invocado.");

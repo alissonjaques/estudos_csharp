@@ -11,16 +11,22 @@ namespace GerenciaDeEstacionamento.Model
 {
     public class Patio
     {
+        // Campos
+        private List<Veiculo> veiculos;
+        private double faturado;
+        private Operador _operadorPatio;
+             
+        // Propriedades
+        public double Faturado { get => faturado; set => faturado = value; }
+        public List<Veiculo> Veiculos { get => veiculos; set => veiculos = value; }
+        public Operador OperadorPatio { get => _operadorPatio; set => _operadorPatio = value; }
 
         public Patio()
         {
             Faturado = 0;
             veiculos = new List<Veiculo>();
         }
-        private List<Veiculo> veiculos;
-        private double faturado;
-        public double Faturado { get => faturado; set => faturado = value; }
-        public List<Veiculo> Veiculos { get => veiculos; set => veiculos = value; }
+        
         public double TotalFaturado()
         {
             return this.Faturado;
@@ -110,7 +116,8 @@ namespace GerenciaDeEstacionamento.Model
             ticket.Append("======= Ticket Estacionamento =======\n")
                 .Append($">>> Identificador: {veiculo.IdTicket}\n")
                 .Append($">>> Data/Hora de Entrada: {DateTime.Now}\n")
-                .Append($">>> Placa do Veículo: {veiculo.Placa}");
+                .Append($">>> Placa do Veículo: {veiculo.Placa}")
+                .Append($">>> Operador Pátio: {this.OperadorPatio.Nome}");
             veiculo.Ticket = ticket.ToString();
             return ticket.ToString();
         }
