@@ -1,17 +1,24 @@
 using GerenciaDeEstacionamento.Enum;
 using GerenciaDeEstacionamento.Model;
+using Xunit.Abstractions;
 
 namespace Testes.Model
 {
-    public class VeiculoTeste
+    public class VeiculoTeste : IDisposable
     {
-        [Fact]
-        [Trait("Veiculo", "Acelerar()")]
-        public void TestaVeiculoAcelerar()
-        {
-            // Arrange
-            var veiculo = new Veiculo();
+        private Veiculo veiculo;
+        public ITestOutputHelper Output { get; }
 
+        public VeiculoTeste(ITestOutputHelper saidaConsoleTeste) { 
+            veiculo = new Veiculo();
+            Output = saidaConsoleTeste;
+            Output.WriteLine("Construtor Invocado");
+        }
+
+        [Fact]
+        [Trait("Veiculo", "Acelerar")]
+        public void DeveAcelerarVeiculo()
+        {            
             // Act
             veiculo.Acelerar(10);
             
@@ -20,12 +27,9 @@ namespace Testes.Model
         } 
         
         [Fact]
-        [Trait("Veiculo", "Frear()")]
-        public void TestaVeiculoFrear()
+        [Trait("Veiculo", "Frear")]
+        public void DeveFrearVeiculo()
         {
-            // Arrange
-            var veiculo = new Veiculo();
-            
             // Act
             veiculo.Frear(10);
             
@@ -35,10 +39,9 @@ namespace Testes.Model
 
         [Fact]
         [Trait("Veiculo", "Testa Tipo")]
-        public void TestaVeiculoTipo()
+        public void TestaOsTiposDeVeiculos()
         {
             // Arrange
-            var veiculo = new Veiculo();
             var carro = new Veiculo();
             
             // Act
@@ -53,12 +56,9 @@ namespace Testes.Model
 
         [Theory]
         [ClassData(typeof(Veiculo))]
-        [Trait("Veiculo", "Acelerar()")]
+        [Trait("Veiculo", "Acelerar")]
         public void TestaVeiculoClass(Veiculo modelo)
-        {
-            // Arrange
-            var veiculo = new Veiculo();
-            
+        {         
             // Act
             veiculo.Acelerar(10);
             modelo.Acelerar(10);
@@ -71,18 +71,22 @@ namespace Testes.Model
         public void TestaDadosVeiculos()
         {
             // Arrange
-            var moto = new Veiculo();
-            moto.Proprietario = "Alisson Santos da Silva";
-            moto.Tipo = TipoVeiculo.Motocicleta;
-            moto.Placa = "JDA-7878";
-            moto.Cor = "Preta";
-            moto.Modelo = "Fan 150";
+            veiculo.Proprietario = "Alisson Santos da Silva";
+            veiculo.Tipo = TipoVeiculo.Motocicleta;
+            veiculo.Placa = "JDA-7878";
+            veiculo.Cor = "Preta";
+            veiculo.Modelo = "Fan 150";
 
             // Act
-            string dados = moto.ToString();
+            string dados = veiculo.ToString();
 
             // Assert
             Assert.Contains("Ficha do Veículo:", dados);
+        }
+
+        public void Dispose()
+        {
+            Output.WriteLine("Execução do Cleanup: Limpando os objetos.");
         }
     }
 }

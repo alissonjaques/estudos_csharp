@@ -1,25 +1,28 @@
 ﻿using GerenciaDeEstacionamento.Model;
 using GerenciaDeEstacionamento.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Numerics;
-using System.Reflection;
-using System.Runtime.ConstrainedExecution;
+using Xunit.Abstractions;
 
 namespace Testes.Model
 {
-    public class PatioTeste
+    public class PatioTeste : IDisposable
     {
-        [Fact]
-        [Trait("Patio","TotalFaturado()")]
-        public void ValidaFaturamento()
+        private Patio estacionamento;
+        private Veiculo veiculo;
+        public ITestOutputHelper Output { get; }
+
+        public PatioTeste(ITestOutputHelper saidaConsoleTeste)
         {
+            estacionamento = new Patio();
+            veiculo = new Veiculo();
+            Output = saidaConsoleTeste;
+            Output.WriteLine("Construtor Invocado.");
+        }
+
+        [Fact]
+        [Trait("Patio","TotalFaturado")]
+        public void DeveRetornar2AoRegistrarEntradaESaidaDeUmAutomovel()
+        {          
             // Arrange
-            var estacionamento = new Patio();
-            var veiculo = new Veiculo();
             veiculo.Proprietario = "João da Silva";
             veiculo.Tipo = TipoVeiculo.Automovel;
             veiculo.Cor = "Amarelo";
@@ -39,15 +42,13 @@ namespace Testes.Model
         [InlineData("Amanda Silva","ASD-9999","Preto","Gol")]
         [InlineData("Joaquim Fracisco Santos","ABD-8888","Vermelha","Titan")]
         [InlineData("Juvenal Domingues Barbosa","CAS-4444","Cinza","Corsa")]
-        [Trait("Patio", "TotalFaturado()")]
-        public void ValidaFaturamentoComVariosVeiculos(string proprietario,
+        [Trait("Patio", "TotalFaturado")]
+        public void DeveValidarFaturamentoComVariosVeiculos(string proprietario,
             string placa,
             string cor,
             string modelo)
         {
             // Arrange
-            var estacionamento = new Patio();
-            var veiculo = new Veiculo();
             veiculo.Proprietario = proprietario;
 
             if (modelo == "Titan")
@@ -87,18 +88,15 @@ namespace Testes.Model
 
         [Theory]
         [InlineData("Amanda Silva", "ASD-9999", "Preto", "Gol")]
-        [Trait("Patio", "TotalFaturado()")]
-        public void LocalizaVeiculoNoPatio(string proprietario,
+        [Trait("Patio", "TotalFaturado")]
+        public void DeveLocalizarVeiculoNoPatioPelaPlaca(string proprietario,
             string placa,
             string cor,
             string modelo)
         {
             // Arrange
-            var estacionamento = new Patio();
-            var veiculo = new Veiculo();
             veiculo.Proprietario = proprietario;
             veiculo.Tipo = TipoVeiculo.Automovel;
-
             veiculo.Cor = cor;
             veiculo.Modelo = modelo;
             veiculo.Placa = placa;
@@ -112,12 +110,10 @@ namespace Testes.Model
         }
 
         [Fact]
-        [Trait("Patio","AlterarDadosVeiculo(Veiculo)")]
+        [Trait("Patio","AlterarDadosVeiculo")]
         public void DeveAlterarDadosVeiculo()
         {
             // Arrange
-            var estacionamento = new Patio();
-            var veiculo = new Veiculo();
             veiculo.Proprietario = "Pedro Abreu";
             veiculo.Cor = "Preto";
             veiculo.Modelo = "Corsa";
@@ -135,6 +131,11 @@ namespace Testes.Model
 
             // Assert
             Assert.Equal(alterado.Cor, veiculoAlterado.Cor);
+        }
+
+        public void Dispose()
+        {
+            Output.WriteLine("Execução do Cleanup: Limpando os objetos.");
         }
     }
 }
